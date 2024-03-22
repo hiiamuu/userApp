@@ -3,6 +3,7 @@ import { cn } from "@lib/utils";
 import type { Metadata } from "next";
 import { APP_DESCRIPTION, APP_NAME } from "@data";
 import { Roboto as FontSans } from "next/font/google";
+import Navbar from "@components/app/navbar";
 
 const fontSans = FontSans({
 	style: ["italic", "normal"],
@@ -28,7 +29,10 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className={cn("font-sans antialiased", fontSans.variable)}>{children}</body>
+			<body className={cn("font-sans antialiased", fontSans.variable)}>
+				<Navbar />
+				{children}
+			</body>
 		</html>
 	);
 }
