@@ -1,9 +1,48 @@
+import Link from "next/link";
 
-export default function Home() {
-  return (
-    <main className="flex  flex-col items-center justify-between">
-      <h1 className="text-4xl font-bold">Hello, World!</h1>
-      
-    </main>
-  );
+type User = {
+	id: number;
+	name: string;
+	website: string;
+	email: string;
+};
+
+async function getData() {
+	const res = await fetch("https://jsonplaceholder.typicode.com/users");
+	if (!res.ok) {
+		throw new Error("Failed to fetch data");
+	}
+	return res.json();
+}
+
+export default async function Home() {
+	const users = await getData();
+	// console.log(users);
+	return (
+		<>
+			<div className="container mx-auto">
+				<h1 className="m-4 md:text-3xl text-xl font-bold text-green-500">List of Users Details</h1>
+				<div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+					{users.map((item: User) => (
+						<div key={item.id} className="my-2 rounded-lg border bg-gray-100 p-4 hover:bg-gray-200">
+							<h2 className="font-bold text-blue-600">
+								Name: <span className="font-normal text-gray-800">{item.name}</span>
+							</h2>
+							<h2 className="font-bold text-blue-600">
+								Email: <span className="font-normal text-gray-800">{item.email}</span>
+							</h2>
+							<h2 className="font-bold text-blue-600">
+								Website:{" "}
+								<span className="font-normal text-gray-800">
+									<Link className="text-green-500 hover:underline" href={item.website} passHref>
+										{item.website}
+									</Link>
+								</span>
+							</h2>
+						</div>
+					))}
+				</div>
+			</div>
+		</>
+	);
 }
