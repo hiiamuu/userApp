@@ -5,11 +5,11 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 const Aboutpage = () => {
 	return (
 		<>
-			<main className="conatiner md:m-5 m-2 flex justify-center">
+			<main className="conatiner md:m-5 flex justify-center">
 				<Card className="w-full md:p-5">
 					<CardHeader>
-						<CardTitle>User form</CardTitle>
-						<CardDescription>This is sample form for collecting user data.</CardDescription>
+						<CardTitle className="text-green-500">User sample form</CardTitle>
+						<CardDescription className="text-grey-200">This is sample form for collecting user data.</CardDescription>
 					</CardHeader>
 					<CardContent>
 						<SampleForm />

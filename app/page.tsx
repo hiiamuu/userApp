@@ -3,8 +3,10 @@ import Link from "next/link";
 type User = {
 	id: number;
 	name: string;
+	username: string;
 	website: string;
 	email: string;
+	phone: string;
 };
 
 async function getData() {
