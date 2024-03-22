@@ -1,14 +1,5 @@
 import Link from "next/link";
 
-type User = {
-	id: number;
-	name: string;
-	username: string;
-	website: string;
-	email: string;
-	phone: string;
-};
-
 async function getData() {
 	const res = await fetch("https://jsonplaceholder.typicode.com/users");
 	if (!res.ok) {
@@ -23,13 +14,20 @@ export default async function Home() {
 	return (
 		<>
 			<div className="container mx-auto">
-				<h1 className="m-4 md:text-3xl text-xl font-bold text-green-500">List of Users Details</h1>
+				<h1 className="m-4 text-xl font-bold text-green-500 md:text-3xl">List of Users Details</h1>
 				<div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
 					{users.map((item: User) => (
 						<div key={item.id} className="my-2 rounded-lg border bg-gray-100 p-4 hover:bg-gray-200">
-							<h2 className="font-bold text-blue-600">
+							{/* <h2 className="font-bold text-blue-600">
 								Name: <span className="font-normal text-gray-800">{item.name}</span>
+							</h2> */}
+							<h2 className="font-bold text-blue-600">
+								Name:{" "}
+								<Link className="font-normal text-gray-800 hover:underline" href={`/users/${item.id}`}>
+									{item.name}
+								</Link>
 							</h2>
+
 							<h2 className="font-bold text-blue-600">
 								Email: <span className="font-normal text-gray-800">{item.email}</span>
 							</h2>
