@@ -7,7 +7,7 @@ export const FormSchema = z.object({
 		.min(3, { message: "Should contain min of 3 characters!" })
 		.max(30, { message: "Should contain max of 30 characters!" })
 		.refine(data => isAlpha(data,"en-US", { ignore: " " }), "Invalid characters found!"),
-	email: z.string().refine(data => isEmail(data), "Invalid email!"),
+	email: z.string().refine(data => isEmail(data), "Invalid email address!"),
 	message: z
 		.string()
 		.min(10, { message: "Should contain min of 10 characters!" })

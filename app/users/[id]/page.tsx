@@ -48,20 +48,20 @@ const Userpage = ({ params }: userProps) => {
 						{user ? (
 							<>
 								<div className="mb-4 flex items-center gap-4">
-									<CircleUserRound className="text-blue-600" />
-									<h2 className="text-lg font-semibold text-gray-800">{user.name}</h2>
+									<CircleUserRound className="text-orange-600" />
+									<h2 className="text-lg font-semibold text-gray-500">{user?.name}</h2>
 								</div>
 								<div className="mb-4 flex items-center gap-4">
-									<Mail className="text-blue-600" />
-									<h2 className="text-lg font-semibold text-gray-800">{user.email}</h2>
+									<Mail className="text-orange-600" />
+									<h2 className="text-lg font-semibold text-gray-500">{user?.email}</h2>
 								</div>
 								<div className="mb-4 flex items-center gap-4">
-									<Globe className="text-blue-600" />
-									<h2 className="text-lg font-semibold text-gray-800">{user.website}</h2>
+									<Globe className="text-orange-600" />
+									<h2 className="text-lg font-semibold text-gray-500">{user?.website}</h2>
 								</div>
 								<div className="mb-4 flex items-center gap-4">
-									<Phone className="text-blue-600" />
-									<h2 className="text-lg font-semibold text-gray-800">{user.phone}</h2>
+									<Phone className="text-orange-600" />
+									<h2 className="text-lg font-semibold text-gray-500">{user?.phone}</h2>
 								</div>
 							</>
 						) : (
