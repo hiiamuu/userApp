@@ -1,6 +1,9 @@
 "use client";
 import { Card, CardContent, CardHeader, CardTitle } from "@components/ui/card";
+import { CircleUserRound, Globe, Mail, Phone } from "lucide-react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import React, { useState, useEffect } from "react";
+import Loader from "@components/app/loader";
 
 type userProps = {
 	params: {
@@ -31,25 +34,38 @@ const Userpage = ({ params }: userProps) => {
 	return (
 		<div className="container mx-auto px-4 py-8">
 			<div className="mx-auto max-w-md">
-				<Card>
-					<CardHeader>
-						<CardTitle className="text-2xl font-bold text-green-500">User Profile Details</CardTitle>
+				<Card className="flex flex-col">
+					<CardHeader className="flex gap-6">
+						<CardTitle className="flex items-center justify-between gap-8 text-2xl font-bold text-green-500">
+							<Avatar>
+								<AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+								<AvatarFallback>CN</AvatarFallback>
+							</Avatar>
+							<p>Profile Details</p>
+						</CardTitle>
 					</CardHeader>
-					<CardContent className="p-4">
+					<CardContent className="flex flex-col p-4">
 						{user ? (
 							<>
-								<h2 className="text-lg font-semibold text-blue-600">
-									Name: <span className="font-normal text-gray-800">{user.name}</span>
-								</h2>
-								<h2 className="text-lg font-semibold text-blue-600">
-									Email: <span className="font-normal text-gray-800">{user.email}</span>
-								</h2>
-								<h2 className="text-lg font-semibold text-blue-600">
-									Website: <span className="font-normal text-gray-800">{user.website}</span>
-								</h2>
+								<div className="mb-4 flex items-center gap-4">
+									<CircleUserRound className="text-blue-600" />
+									<h2 className="text-lg font-semibold text-gray-800">{user.name}</h2>
+								</div>
+								<div className="mb-4 flex items-center gap-4">
+									<Mail className="text-blue-600" />
+									<h2 className="text-lg font-semibold text-gray-800">{user.email}</h2>
+								</div>
+								<div className="mb-4 flex items-center gap-4">
+									<Globe className="text-blue-600" />
+									<h2 className="text-lg font-semibold text-gray-800">{user.website}</h2>
+								</div>
+								<div className="mb-4 flex items-center gap-4">
+									<Phone className="text-blue-600" />
+									<h2 className="text-lg font-semibold text-gray-800">{user.phone}</h2>
+								</div>
 							</>
 						) : (
-							<p className="text-lg font-semibold">Loading...</p>
+							<p className="text-lg font-semibold"><Loader/></p>
 						)}
 					</CardContent>
 				</Card>

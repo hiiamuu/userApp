@@ -8,10 +8,12 @@ import { Input } from "@components/ui/input";
 import { Button } from "@components/ui/button";
 import { Textarea } from "@components/ui/textarea";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useToast } from "@components/ui/use-toast";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@components/ui/form";
 
 const SampleForm = () => {
 	const router = useRouter();
+	const { toast } = useToast();
 
 	const form = useForm<z.infer<typeof FormSchema>>({
 		resolver: zodResolver(FormSchema),
@@ -24,14 +26,18 @@ const SampleForm = () => {
 	});
 
 	async function onSubmit(values: z.infer<typeof FormSchema>) {
-        console.log(values);
-        form.reset();
+		console.log(values);
+		toast({
+			title: "Submitted",
+			description: "Your form has been submitted successfully!",
+		});
+		form.reset();
 	}
 	return (
 		<>
 			<Form {...form}>
 				<form className="grid w-full" onSubmit={form.handleSubmit(onSubmit)}>
-					<div className="grid grid-cols-1 gap-5 lg:grid-cols-2 mb-5">
+					<div className="mb-5 grid grid-cols-1 gap-5 lg:grid-cols-2">
 						<FormField
 							control={form.control}
 							name="name"
@@ -52,7 +58,7 @@ const SampleForm = () => {
 								<FormItem>
 									<FormLabel>Email</FormLabel>
 									<FormControl>
-										<Input placeholder="Enter your email" {...field} />
+										<Input placeholder="Enter your email address" {...field} />
 									</FormControl>
 									<FormMessage />
 								</FormItem>
@@ -72,7 +78,7 @@ const SampleForm = () => {
 							</FormItem>
 						)}
 					/>
-					<div className="grid grid-cols-1 gap-5 lg:grid-cols-2 mt-5">
+					<div className="mt-5 grid grid-cols-1 gap-5 lg:grid-cols-2">
 						<Button className="rounded-full" onClick={() => router.back()} size="lg" type="button" variant="ghost">
 							Back
 						</Button>

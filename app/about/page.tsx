@@ -8,7 +8,7 @@ const Aboutpage = () => {
 			<main className="conatiner md:m-5 flex justify-center">
 				<Card className="w-full md:p-5">
 					<CardHeader>
-						<CardTitle className="text-green-500">User sample form</CardTitle>
+						<CardTitle className="text-green-500">User contact form</CardTitle>
 						<CardDescription className="text-grey-200">This is sample form for collecting user data.</CardDescription>
 					</CardHeader>
 					<CardContent>

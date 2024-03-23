@@ -2,6 +2,7 @@ import "./globals.css";
 import { cn } from "@lib/utils";
 import type { Metadata } from "next";
 import { APP_DESCRIPTION, APP_NAME } from "@data";
+import { Toaster } from "@/components/ui/toaster"
 import { Roboto as FontSans } from "next/font/google";
 import Navbar from "@components/app/navbar";
 
@@ -32,6 +33,7 @@ export default function RootLayout({
 			<body className={cn("font-sans antialiased", fontSans.variable)}>
 				<Navbar />
 				{children}
+				<Toaster />
 			</body>
 		</html>
 	);
